@@ -1,4 +1,4 @@
-package main.java;
+package data;
 
 public class Point
 {

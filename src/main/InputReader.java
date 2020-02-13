@@ -1,4 +1,4 @@
-package main.java;
+package main;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,13 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import data.Point;
+
 
 public class InputReader
 {
 	public static void main(final String[] args)
 	{
 		final InputReader reader = new InputReader();
-		final File f = new File("/Users/sumitaggarwal/Documents/REPLYCODECHALLANGE2019/resources/1_victoria_lake.txt");
+		final File f = new File("resources/1_victoria_lake.txt");
 		try
 		{
 			final FileInputStream inputStream = new FileInputStream(f);
