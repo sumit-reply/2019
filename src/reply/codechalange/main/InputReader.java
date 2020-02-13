@@ -12,14 +12,19 @@ import java.io.FileWriter;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 
 public class InputReader
 {
+	public static Map<Character, Integer> terrainValueMap = new HashMap<>();
+
 	public static void main(final String[] args)
 	{
+		terrainValueMap = getTerrainMap();
 		final File f = new File("resources/1_victoria_lake.txt");
 		try
 		{
@@ -38,18 +43,19 @@ public class InputReader
 			final char[][] grid = new char[m][n];
 
 			final List<Customer> customers = new ArrayList<>();
-
+			int customerId = 1;
 			while (customerOffices > 0)
 			{
 				final String cutomerOffice = sc.nextLine();
 				final String[] arrCustOffice = cutomerOffice.split("\\s");
 
 				final Point point = new Point(Integer.parseInt(arrCustOffice[0]), Integer.parseInt(arrCustOffice[1]));
-				final Customer customer = new Customer(point,
+				final Customer customer = new Customer(customerId, point,
 						Integer.parseInt(arrCustOffice[2]));
 				customers.add(customer);
 
 				customerOffices--;
+				customerId++;
 			}
 
 			int countRow = 0;
@@ -76,12 +82,26 @@ public class InputReader
 
 
 			final Output student = new Output(1, 2, "uuuddddrrrlll");
-//			reader.WriteObjectToFile(student);
+			//			WriteObjectToFile(student);
 		}
 		catch (final FileNotFoundException e)
 		{
 			e.printStackTrace();
 		}
+	}
+
+	private static Map<Character, Integer> getTerrainMap()
+	{
+		final Map<Character, Integer> terrainValueMap = new HashMap<>();
+		terrainValueMap.put('~', 800);
+		terrainValueMap.put('*', 200);
+		terrainValueMap.put('+', 150);
+		terrainValueMap.put('X', 120);
+		terrainValueMap.put('_', 100);
+		terrainValueMap.put('H', 70);
+		terrainValueMap.put('T', 50);
+
+		return terrainValueMap;
 	}
 
 
@@ -99,7 +119,7 @@ public class InputReader
 			final PrintWriter out = new PrintWriter(new FileWriter("resources/output.txt", true), true);
 			out.write(result.getX() + " " + result.getY() + " " + result.getPath());
 			out.close();
-			
+
 			System.out.println("The Object  was succesfully written to a file");
 
 		}
