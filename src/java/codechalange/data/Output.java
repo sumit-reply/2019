@@ -1,4 +1,4 @@
-package data;
+package java.codechalange.data;
 
 public class Output
 {

@@ -1,5 +1,6 @@
-package main;
+package java.codechalange.main;
 
+import java.codechalange.data.Customer;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -8,7 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import data.Point;
+import java.codechalange.data.Point;
+import java.util.logging.Logger;
 
 
 public class InputReader
@@ -33,16 +35,17 @@ public class InputReader
 			final int m = Integer.parseInt(firstArr[1]);
 			final char[][] grid = new char[m][n];
 
-			final List<Point> customers = new ArrayList<>();
+			final List<Customer> customers = new ArrayList<>();
 
 			while (customerOffices > 0)
 			{
 				final String cutomerOffice = sc.nextLine();
 				final String[] arrCustOffice = cutomerOffice.split("\\s");
 
-				final Point point = new Point(Integer.parseInt(arrCustOffice[0]), Integer.parseInt(arrCustOffice[1]),
+				final Point point = new Point(Integer.parseInt(arrCustOffice[0]), Integer.parseInt(arrCustOffice[1]));
+				final Customer customer = new Customer(point,
 						Integer.parseInt(arrCustOffice[2]));
-				customers.add(point);
+				customers.add(customer);
 
 				customerOffices--;
 			}
@@ -60,6 +63,11 @@ public class InputReader
 				countRow++;
 			}
 			System.out.println("Finished reading file......");
+
+
+			//create Route iterator for each coordinate in the grid
+
+			//Iterate the Route iterator to find the apt offices
 		}
 		catch (final FileNotFoundException e)
 		{
@@ -67,22 +75,4 @@ public class InputReader
 		}
 	}
 
-
-	// get file from classpath, resources folder
-	private File getFileFromResources(final String fileName)
-	{
-
-		final ClassLoader classLoader = getClass().getClassLoader();
-
-		final URL resource = classLoader.getResource(fileName);
-		if (resource == null)
-		{
-			throw new IllegalArgumentException("file is not found!");
-		}
-		else
-		{
-			return new File(resource.getFile());
-		}
-
-	}
 }
