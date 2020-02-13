@@ -1,10 +1,13 @@
-package java.codechalange.main;
+package reply.codechalange.main;
 
-import java.codechalange.data.Customer;
-import java.codechalange.data.Point;
+import reply.codechalange.data.Customer;
+import reply.codechalange.data.Output;
+import reply.codechalange.data.Point;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -68,10 +71,34 @@ public class InputReader
 			//populate the Output object
 
 			//convert the output object to a file
+
+
+			final Output student = new Output(1, 2, "uuuddddrrrlllll");
+			reader.WriteObjectToFile(student);
 		}
 		catch (final FileNotFoundException e)
 		{
 			e.printStackTrace();
+		}
+	}
+
+
+	public void WriteObjectToFile(final Object result)
+	{
+
+		try
+		{
+
+			final FileOutputStream fileOut = new FileOutputStream("resources/Result.txt");
+			final ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+			objectOut.writeObject(result);
+			objectOut.close();
+			System.out.println("The Object  was succesfully written to a file");
+
+		}
+		catch (final Exception ex)
+		{
+			ex.printStackTrace();
 		}
 	}
 

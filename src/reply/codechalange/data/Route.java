@@ -1,4 +1,4 @@
-package java.codechalange.data;
+package reply.codechalange.data;
 
 import java.util.List;
 
