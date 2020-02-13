@@ -64,6 +64,10 @@ public class InputReader
 			//create Route iterator for each coordinate in the grid
 
 			//Iterate the Route iterator to find the apt offices
+
+			//populate the Output object
+
+			//convert the output object to a file
 		}
 		catch (final FileNotFoundException e)
 		{
