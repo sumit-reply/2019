@@ -76,8 +76,7 @@ public class InputReader
 
 
 			final Output student = new Output(1, 2, "uuuddddrrrlll");
-
-			reader.WriteObjectToFile(student);
+//			reader.WriteObjectToFile(student);
 		}
 		catch (final FileNotFoundException e)
 		{
