@@ -1,16 +1,13 @@
 package java.codechalange.main;
 
 import java.codechalange.data.Customer;
+import java.codechalange.data.Point;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import java.codechalange.data.Point;
-import java.util.logging.Logger;
 
 
 public class InputReader
@@ -63,7 +60,6 @@ public class InputReader
 				countRow++;
 			}
 			System.out.println("Finished reading file......");
-
 
 			//create Route iterator for each coordinate in the grid
 
