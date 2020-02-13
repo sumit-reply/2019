@@ -14,7 +14,6 @@ public class InputReader
 {
 	public static void main(final String[] args)
 	{
-		final InputReader reader = new InputReader();
 		final File f = new File("resources/1_victoria_lake.txt");
 		try
 		{
