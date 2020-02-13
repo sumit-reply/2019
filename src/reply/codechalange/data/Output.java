@@ -1,7 +1,11 @@
-package java.codechalange.data;
+package reply.codechalange.data;
 
-public class Output
+import java.io.Serializable;
+
+
+public class Output  implements Serializable
 {
+	private static final long serialVersionUID = 1L;
 	int x;
 	int y;
 	String path;
@@ -41,5 +45,15 @@ public class Output
 	public void setPath(final String path)
 	{
 		this.path = path;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Output{" +
+				"x=" + x +
+				", y=" + y +
+				", path='" + path + '\'' +
+				'}';
 	}
 }

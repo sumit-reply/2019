@@ -1,10 +1,16 @@
-package java.codechalange.main;
+package reply.codechalange.main;
 
-import java.codechalange.data.Customer;
-import java.codechalange.data.Point;
+import reply.codechalange.data.Customer;
+import reply.codechalange.data.Output;
+import reply.codechalange.data.Point;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -67,10 +73,40 @@ public class InputReader
 			//populate the Output object
 
 			//convert the output object to a file
+
+
+			final Output student = new Output(1, 2, "uuuddddrrrlll");
+
+			reader.WriteObjectToFile(student);
 		}
 		catch (final FileNotFoundException e)
 		{
 			e.printStackTrace();
+		}
+	}
+
+
+	public void WriteObjectToFile(final Output result)
+	{
+		try
+		{
+			// approach 1
+			final FileOutputStream fileOut = new FileOutputStream("resources/result.txt");
+			final ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+			objectOut.writeObject(result);
+			objectOut.close();
+			fileOut.close();
+			// approach 2
+			final PrintWriter out = new PrintWriter(new FileWriter("resources/output.txt", true), true);
+			out.write(result.getX() + " " + result.getY() + " " + result.getPath());
+			out.close();
+			
+			System.out.println("The Object  was succesfully written to a file");
+
+		}
+		catch (final Exception ex)
+		{
+			ex.printStackTrace();
 		}
 	}
 
