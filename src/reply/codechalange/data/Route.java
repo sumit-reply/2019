@@ -15,4 +15,24 @@ public class Route
 		this.coordinateRoute = coordinateRoute;
 		this.route = route;
 	}
+
+	public List<Point> getCoordinateRoute()
+	{
+		return coordinateRoute;
+	}
+
+	public void setCoordinateRoute(final List<Point> coordinateRoute)
+	{
+		this.coordinateRoute = coordinateRoute;
+	}
+
+	public String getRoute()
+	{
+		return route;
+	}
+
+	public void setRoute(final String route)
+	{
+		this.route = route;
+	}
 }
