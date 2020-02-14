@@ -3,6 +3,7 @@ package reply.codechalange.main;
 import reply.codechalange.data.Customer;
 import reply.codechalange.data.Output;
 import reply.codechalange.data.Point;
+import reply.codechalange.data.RouteIterator;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,6 +16,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Scanner;
 
 
@@ -41,6 +44,7 @@ public class InputReader
 			final int n = Integer.parseInt(firstArr[0]);
 			final int m = Integer.parseInt(firstArr[1]);
 			final char[][] grid = new char[m][n];
+			final int[][] intGrid = new int[m][n];
 
 			final List<Customer> customers = new ArrayList<>();
 			int customerId = 1;
@@ -66,12 +70,21 @@ public class InputReader
 				final String line = sc.nextLine();
 				for (int i = 0; i < n; i++)
 				{
+
+
 					grid[countRow][i] = line.charAt(i);
+
+					intGrid[countRow][i]= terrainValueMap.get(line.charAt(i));
+
 				}
 				countRow++;
 			}
-			System.out.println("Finished reading file......");
 
+
+			System.out.println("Finished reading file......");
+			System.out.println(intGrid);
+
+			final List<RouteIterator> routeIterators = findRoutesBetweenCustomers(grid, customers, terrainValueMap);
 			//create Route iterator for each coordinate in the grid
 
 			//Iterate the Route iterator to find the apt offices
@@ -100,6 +113,7 @@ public class InputReader
 		terrainValueMap.put('_', 100);
 		terrainValueMap.put('H', 70);
 		terrainValueMap.put('T', 50);
+		terrainValueMap.put('#', 0);
 
 		return terrainValueMap;
 	}
