@@ -1,23 +1,33 @@
 package reply.codechalange.data;
 
-import java.util.List;
-
-
 public class Route
 {
-	List<Point> coordinateRoute;
+	Point point;
 
 	String route;
 
+	int cost;
 
-	public List<Point> getCoordinateRoute()
+	public Route(final Point point, final String route, final int cost)
 	{
-		return coordinateRoute;
+		this.point = point;
+		this.route = route;
+		this.cost = cost;
 	}
 
-	public void setCoordinateRoute(final List<Point> coordinateRoute)
+	public Route()
 	{
-		this.coordinateRoute = coordinateRoute;
+
+	}
+
+	public Point getPoint()
+	{
+		return point;
+	}
+
+	public void setPoint(final Point point)
+	{
+		this.point = point;
 	}
 
 	public String getRoute()
@@ -30,29 +40,13 @@ public class Route
 		this.route = route;
 	}
 
-	public Route(final List<Point> coordinateRoute, final String route)
+	public int getCost()
 	{
-		this.coordinateRoute = coordinateRoute;
-		this.route = route;
+		return cost;
 	}
 
-	public List<Point> getCoordinateRoute()
+	public void setCost(final int cost)
 	{
-		return coordinateRoute;
-	}
-
-	public void setCoordinateRoute(final List<Point> coordinateRoute)
-	{
-		this.coordinateRoute = coordinateRoute;
-	}
-
-	public String getRoute()
-	{
-		return route;
-	}
-
-	public void setRoute(final String route)
-	{
-		this.route = route;
+		this.cost = cost;
 	}
 }

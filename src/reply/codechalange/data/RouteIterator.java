@@ -1,14 +1,23 @@
 package reply.codechalange.data;
 
+import java.util.Map;
+
+
 public class RouteIterator
 {
 	Point office;
 
-	Route route;
+	Map<Customer, Route> customerRouteMap;
 
-	int cost;
+	public RouteIterator()
+	{
+	}
 
-	Customer customer;
+	public RouteIterator(final Point office, final Map<Customer, Route> customerRouteMap)
+	{
+		this.office = office;
+		this.customerRouteMap = customerRouteMap;
+	}
 
 	public Point getOffice()
 	{
@@ -20,41 +29,13 @@ public class RouteIterator
 		this.office = office;
 	}
 
-	public Route getRoute()
+	public Map<Customer, Route> getCustomerRouteMap()
 	{
-		return route;
+		return customerRouteMap;
 	}
 
-	public void setRoute(final Route route)
+	public void setCustomerRouteMap(final Map<Customer, Route> customerRouteMap)
 	{
-		this.route = route;
-	}
-
-	public int getCost()
-	{
-		return cost;
-	}
-
-	public void setCost(final int cost)
-	{
-		this.cost = cost;
-	}
-
-	public Customer getCustomer()
-	{
-		return customer;
-	}
-
-	public void setCustomer(final Customer customer)
-	{
-		this.customer = customer;
-	}
-
-	public RouteIterator(final Point office, final Route route, final int cost, final Customer customer)
-	{
-		this.office = office;
-		this.route = route;
-		this.cost = cost;
-		this.customer = customer;
+		this.customerRouteMap = customerRouteMap;
 	}
 }

@@ -43,8 +43,7 @@ public class InputReader
 
 			final int n = Integer.parseInt(firstArr[0]);
 			final int m = Integer.parseInt(firstArr[1]);
-			final char[][] grid = new char[m][n];
-			final int[][] intGrid = new int[m][n];
+			final int[][] grid = new int[m][n];
 
 			final List<Customer> customers = new ArrayList<>();
 			int customerId = 1;
@@ -53,7 +52,7 @@ public class InputReader
 				final String cutomerOffice = sc.nextLine();
 				final String[] arrCustOffice = cutomerOffice.split("\\s");
 
-				final Point point = new Point(Integer.parseInt(arrCustOffice[0]), Integer.parseInt(arrCustOffice[1]));
+				final Point point = new Point(Integer.parseInt(arrCustOffice[0]), Integer.parseInt(arrCustOffice[1]), null);
 				final Customer customer = new Customer(customerId, point,
 						Integer.parseInt(arrCustOffice[2]));
 				customers.add(customer);
@@ -70,21 +69,20 @@ public class InputReader
 				final String line = sc.nextLine();
 				for (int i = 0; i < n; i++)
 				{
-
-
-					grid[countRow][i] = line.charAt(i);
-
-					intGrid[countRow][i]= terrainValueMap.get(line.charAt(i));
-
+					grid[countRow][i]= terrainValueMap.get(line.charAt(i));
 				}
 				countRow++;
 			}
 
 
 			System.out.println("Finished reading file......");
-			System.out.println(intGrid);
+//			System.out.println(intGrid);
 
-			final List<RouteIterator> routeIterators = findRoutesBetweenCustomers(grid, customers, terrainValueMap);
+			final GraphTraversal graphTraversal = new GraphTraversal();
+
+			System.out.println("Start traversing graph ....");
+			final List<RouteIterator> routeIterators = graphTraversal.traverseGraph(grid, customers);
+
 			//create Route iterator for each coordinate in the grid
 
 			//Iterate the Route iterator to find the apt offices

@@ -4,6 +4,14 @@ public class Point
 {
 	int x;
 	int y;
+	Point parent;
+
+	public Point(final int x, final int y, final Point parent)
+	{
+		this.x = x;
+		this.y = y;
+		this.parent = parent;
+	}
 
 	public int getX()
 	{
@@ -25,29 +33,13 @@ public class Point
 		this.y = y;
 	}
 
-	public Point(final int x, final int y)
+	public Point getParent()
 	{
-		this.x = x;
-		this.y = y;
+		return parent;
 	}
 
-	public int getX()
+	public void setParent(final Point parent)
 	{
-		return x;
-	}
-
-	public void setX(final int x)
-	{
-		this.x = x;
-	}
-
-	public int getY()
-	{
-		return y;
-	}
-
-	public void setY(final int y)
-	{
-		this.y = y;
+		this.parent = parent;
 	}
 }
