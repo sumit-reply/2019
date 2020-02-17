@@ -52,7 +52,7 @@ public class InputReader
 				final String cutomerOffice = sc.nextLine();
 				final String[] arrCustOffice = cutomerOffice.split("\\s");
 
-				final Point point = new Point(Integer.parseInt(arrCustOffice[0]), Integer.parseInt(arrCustOffice[1]), null);
+				final Point point = new Point(Integer.parseInt(arrCustOffice[0]) -1, Integer.parseInt(arrCustOffice[1]) -1, null);
 				final Customer customer = new Customer(customerId, point,
 						Integer.parseInt(arrCustOffice[2]));
 				customers.add(customer);

@@ -68,7 +68,7 @@ public class GraphTraversal
 				{
 					map = routeIterator.getCustomerRouteMap();
 				}
-				map.put(customer, printPath(top, "", 0, grid));
+				map.put(customer, printPath(top, new StringBuilder(), 0, grid));
 
 				routeIterator.setCustomerRouteMap(map);
 				break;
@@ -108,13 +108,13 @@ public class GraphTraversal
 
 
 	// Utility function to print path from source to destination
-	private Route printPath(final Point point, String path, int cost, final int[][] grid)
+	private Route printPath(final Point point, final StringBuilder path, int cost, final int[][] grid)
 	{
 		final Route route = new Route();
 		if (point == null)
 		{
 			route.setPoint(point);
-			route.setRoute(path);
+			route.setRoute(path.reverse().toString());
 			route.setCost(cost);
 			return route;
 		}
@@ -122,7 +122,7 @@ public class GraphTraversal
 		if(point.getParent() != null)
 		{
 			cost += grid[point.getX()][point.getY()];
-			path = path + getPath(point);
+			path.append(getPath(point));
 		}
 
 		return printPath(point.getParent(), path, cost, grid);
